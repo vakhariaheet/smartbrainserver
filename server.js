@@ -22,9 +22,7 @@ const db = knex({
     }
   });
 
-app.get('/', (req,res) =>{
-    res.send('it is working');
-})
+app.get('/', (req,res) =>{res.send('it is working')})
 // Post request for Checking Existing user
 app.post('/signin' , (req, res) => {SignIn(db , bcrypt,req,res )} 
 )
