@@ -31,6 +31,6 @@ app.post('/register' ,  (req,res) => {Register(req,res, db  ,bcrypt)})
 app.get('/profile/:id' , (req,res) => {Profile(req,res,db)})
 app.put('/image' , (req,res) =>{Image(req,res,db)})
 app.post('/image',(req,res) => {APIHandler(req,res)})
-app.listen(process.env.PORT || 3000 , () => {
-    console.log(`The Server has been started at port ${process.env.PORT}`)
+app.listen(process.env.PORT, () => {
+    console.log(`The Server has been started  `)
 })
