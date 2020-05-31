@@ -15,15 +15,24 @@ app.use(express.json());
 const db = knex({
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
-      user : 'aquisition',
-      password : '',
-      database : 'brain-api'
-      // connectionString : process.env.DATABASE_URL,
-      // ssl : true
+      connectionString: process.env.DATABASE_URL,
+      ssl: {
+        rejectUnauthorized: false
+      }
     }
   });
-
+  app.get('/db', async (req, res) => {
+    try {
+      const client = await pool.connect();
+      const result = await client.query('SELECT * FROM test_table');
+      const results = { 'results': (result) ? result.rows : null};
+      res.render('pages/db', results );
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
+  })
 app.get('/', (req,res) =>{res.send('it is working')})
 // Post request for Checking Existing user
 app.post('/signin' , (req, res) => {SignIn(db , bcrypt,req,res )} 
