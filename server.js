@@ -1,6 +1,5 @@
 import express from 'express'
 import cors from 'cors';
-import pg from 'pg'
 import knex from 'knex'
 import bcrypt from 'bcrypt-nodejs';
 import Register from './controllers/Register/Register.js'
@@ -23,18 +22,7 @@ const db = knex({
       }
     }
   });
-  app.get('/db', async (req, res) => {
-    try {
-      const client = await pool.connect();
-      const result = await client.query('SELECT * FROM users');
-      const results = { 'results': (result) ? result.rows : null};
-      res.render('pages/db', results );
-      client.release();
-    } catch (err) {
-      console.error(err);
-      res.send("Error " + err);
-    }
-  })
+ 
 app.get('/', (req,res) =>{res.send('it is working')})
 // Post request for Checking Existing user
 app.post('/signin' , (req, res) => {SignIn(db , bcrypt,req,res )} 
