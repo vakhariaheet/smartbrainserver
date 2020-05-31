@@ -7,6 +7,7 @@ import SignIn from './controllers/SignIn.js'
 import {Image} from './controllers/Image.js'
 import {APIHandler} from  './controllers/Image.js'
 import Profile from './controllers/Profile.js'
+import Pool from 'pg'
 
 const app = express();
 app.use(cors());
