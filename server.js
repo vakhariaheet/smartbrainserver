@@ -15,10 +15,6 @@ app.use(express.json());
 const db = knex({
     client: 'pg',
     connection: {
-      // host : 'postgresql-rectangular-26405',
-      // user : 'aquisition',
-      // password : '',
-      // database : 'brain-api'
       connectionString: process.env.DATABASE_URL,
       ssl: {
         rejectUnauthorized: false
