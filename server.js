@@ -31,7 +31,7 @@ const db = knex({
   app.get('/db', async (req, res) => {
     try {
       const client = await pool.connect();
-      const result = await client.query('SELECT * FROM test_table');
+      const result = await client.query('SELECT * FROM users');
       const results = { 'results': (result) ? result.rows : null};
       res.render('pages/db', results );
       client.release();
