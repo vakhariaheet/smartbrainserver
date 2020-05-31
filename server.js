@@ -36,5 +36,5 @@ app.get('/profile/:id' , (req,res) => {Profile(req,res,db)})
 app.put('/image' , (req,res) =>{Image(req,res,db)})
 app.post('/image',(req,res) => {APIHandler(req,res)})
 app.listen(process.env.PORT || 3000, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  console.log('The server is running');
 });
