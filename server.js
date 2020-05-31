@@ -8,17 +8,12 @@ import SignIn from './controllers/SignIn.js'
 import {Image} from './controllers/Image.js'
 import {APIHandler} from  './controllers/Image.js'
 import Profile from './controllers/Profile.js'
-const {Pool} = pg
+
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
+
 const db = knex({
     client: 'pg',
     connection: {
