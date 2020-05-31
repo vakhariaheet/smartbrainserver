@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors';
+import pg from 'pg'
 import knex from 'knex'
 import bcrypt from 'bcrypt-nodejs';
 import Register from './controllers/Register/Register.js'
@@ -7,7 +8,7 @@ import SignIn from './controllers/SignIn.js'
 import {Image} from './controllers/Image.js'
 import {APIHandler} from  './controllers/Image.js'
 import Profile from './controllers/Profile.js'
-import {Pool} from 'pg'
+const {Pool} = pg
 
 const app = express();
 app.use(cors());
