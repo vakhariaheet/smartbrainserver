@@ -1,6 +1,7 @@
 const Register = (req,res, db  ,bcrypt) =>{
         const {email, name, password} = req.body
-        var hash = bcrypt.hashSync(password);
+        const salt = bcrypt.genSaltSync(saltRounds);    
+        var hash = bcrypt.hashSync(password,salt);
 
         if(!email || !password || !name){
             return res.status(400).json('Insufficient information')

@@ -15,10 +15,12 @@ app.use(express.json());
 const db = knex({
     client: 'pg',
     connection: {
-      connectionString: process.env.DATABASE_URL,
-      ssl: {
-        rejectUnauthorized: false
-      }
+      host : '127.0.0.1',
+      user : 'aquisition',
+      password : '',
+      database : 'brain-api'
+      // connectionString : process.env.DATABASE_URL,
+      // ssl : true
     }
   });
 
@@ -32,5 +34,5 @@ app.get('/profile/:id' , (req,res) => {Profile(req,res,db)})
 app.put('/image' , (req,res) =>{Image(req,res,db)})
 app.post('/image',(req,res) => {APIHandler(req,res)})
 app.listen(process.env.PORT || 3000, function(){
-  console.log('The server is running');
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
