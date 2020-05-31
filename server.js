@@ -11,7 +11,12 @@ import Profile from './controllers/Profile.js'
 const app = express();
 app.use(cors());
 app.use(express.json());
-
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 const db = knex({
     client: 'pg',
     connection: {
@@ -23,7 +28,7 @@ const db = knex({
   });
   app.get('/db', async (req, res) => {
     try {
-      const client = await db.connect();
+      const client = await pool.connect();
       const result = await client.query('SELECT * FROM test_table');
       const results = { 'results': (result) ? result.rows : null};
       res.render('pages/db', results );
